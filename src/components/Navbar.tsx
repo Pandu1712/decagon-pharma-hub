@@ -187,7 +187,7 @@ function NavItem({
   return (
     <Link
       to={to}
-      hash={hash}
+      {...(hash ? { hash } : {})}
       className={cn(
         "rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors",
         solid
