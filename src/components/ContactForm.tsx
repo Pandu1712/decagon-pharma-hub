@@ -10,7 +10,13 @@ const enquiryTypes = [
   "Other",
 ];
 
-type Errors = Partial<Record<string, string>>;
+type Errors = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  enquiryType?: string;
+  message?: string;
+};
 
 export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }) {
   const [values, setValues] = useState({
@@ -29,13 +35,13 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
 
   const validate = () => {
     const e: Errors = {};
-    if (values.name.trim().length < 2) e.name = "Please enter your full name.";
+    if (values.name.trim().length < 2) e['name'] = "Please enter your full name.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email.trim()))
-      e.email = "Please enter a valid email address.";
+      e['email'] = "Please enter a valid email address.";
     if (values.phone.trim().replace(/\D/g, "").length < 7)
-      e.phone = "Please enter a valid phone number.";
-    if (!values.enquiryType) e.enquiryType = "Please select an enquiry type.";
-    if (values.message.trim().length < 10) e.message = "Please enter at least 10 characters.";
+      e['phone'] = "Please enter a valid phone number.";
+    if (!values.enquiryType) e['enquiryType'] = "Please select an enquiry type.";
+    if (values.message.trim().length < 10) e['message'] = "Please enter at least 10 characters.";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -84,7 +90,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
       className="rounded-3xl border border-border bg-card p-6 shadow-soft md:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Full Name" required error={errors.name}>
+        <Field label="Full Name" required {...(errors['name'] ? { error: errors['name'] } : {})}>
           <input
             className={inputCls}
             value={values.name}
@@ -93,7 +99,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
             placeholder="Your name"
           />
         </Field>
-        <Field label="Email Address" required error={errors.email}>
+        <Field label="Email Address" required {...(errors['email'] ? { error: errors['email'] } : {})}>
           <input
             className={inputCls}
             type="email"
@@ -103,7 +109,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
             placeholder="you@example.com"
           />
         </Field>
-        <Field label="Phone Number" required error={errors.phone}>
+        <Field label="Phone Number" required {...(errors['phone'] ? { error: errors['phone'] } : {})}>
           <input
             className={inputCls}
             type="tel"
@@ -122,7 +128,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
             placeholder="Optional"
           />
         </Field>
-        <Field label="Enquiry Type" required error={errors.enquiryType}>
+        <Field label="Enquiry Type" required {...(errors['enquiryType'] ? { error: errors['enquiryType'] } : {})}>
           <select
             className={inputCls}
             value={values.enquiryType}
@@ -154,7 +160,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
       </div>
 
       <div className="mt-5">
-        <Field label="Message" required error={errors.message}>
+        <Field label="Message" required {...(errors['message'] ? { error: errors['message'] } : {})}>
           <textarea
             className={`${inputCls} min-h-32 resize-y`}
             value={values.message}
