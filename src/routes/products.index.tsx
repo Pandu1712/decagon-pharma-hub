@@ -19,7 +19,7 @@ type Search = { category?: string; q?: string; letter?: string };
 
 const PAGE_SIZE = 12;
 
-export const Route = createFileRoute("/products")({
+export const Route = createFileRoute("/products/")({
   validateSearch: (search: Record<string, unknown>): Search => ({
     ...(typeof search["category"] === "string" ? { category: search["category"] } : {}),
     ...(typeof search["q"] === "string" ? { q: search["q"] } : {}),
