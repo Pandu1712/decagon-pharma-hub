@@ -32,26 +32,28 @@ import { cn } from "@/lib/utils";
 export function AboutSection() {
   return (
     <section id="about" className="section-y bg-background">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <Reveal className="relative">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
+        <Reveal className="relative h-full flex flex-col justify-center">
           <div className="absolute -left-6 -top-6 hidden size-40 rounded-3xl bg-gradient-accent opacity-20 blur-2xl lg:block" />
-          <img
-            src={aboutImg}
-            alt="DECAGON researchers reviewing product data in a laboratory"
-            width={1200}
-            height={900}
-            loading="lazy"
-            className="relative aspect-[4/3] max-h-[340px] w-full rounded-3xl object-cover shadow-lift"
-          />
-          <div className="absolute -bottom-8 -right-4 hidden max-w-[15rem] rounded-2xl border border-border bg-card p-5 shadow-lift md:block">
-            <p className="text-3xl font-bold text-gradient-brand">{products.length}</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Products across {categories.length} therapeutic categories
-            </p>
+          <div className="relative overflow-hidden rounded-3xl shadow-lift">
+            <img
+              src={aboutImg}
+              alt="DECAGON researchers reviewing product data in a laboratory"
+              width={1200}
+              height={900}
+              loading="lazy"
+              className="h-full min-h-[320px] max-h-[420px] w-full object-cover"
+            />
+            <div className="absolute bottom-4 right-4 max-w-[14rem] rounded-xl border border-border/80 bg-card/95 p-3.5 shadow-soft backdrop-blur-md">
+              <p className="text-2xl font-bold text-gradient-brand">{products.length}</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Products across {categories.length} therapeutic categories
+              </p>
+            </div>
           </div>
         </Reveal>
 
-        <div>
+        <div className="flex flex-col justify-center">
           <SectionHeading
             align="left"
             eyebrow="About DECAGON"
@@ -62,7 +64,7 @@ export function AboutSection() {
           <Reveal delay={150}>
             <Link
               to="/about"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
             >
               Learn More
               <ArrowRight className="size-4" />
@@ -77,18 +79,18 @@ export function AboutSection() {
 export function StatsSection() {
   const { ref, shown } = useReveal();
   return (
-    <div ref={ref} className="mt-10 grid grid-cols-2 gap-4 sm:gap-6">
+    <div ref={ref} className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
       {stats.map((s) => (
         <div
           key={s.label}
-          className="rounded-2xl border border-border bg-surface p-5 shadow-soft"
+          className="rounded-xl border border-border bg-surface p-3.5 shadow-soft sm:p-4"
         >
           {"value" in s ? (
             <Counter target={s.value} suffix={s.suffix} active={shown} />
           ) : (
-            <p className="text-3xl font-bold text-gradient-brand md:text-4xl">{s.text}</p>
+            <p className="text-2xl font-bold text-gradient-brand sm:text-3xl">{s.text}</p>
           )}
-          <p className="mt-1.5 text-sm text-muted-foreground">{s.label}</p>
+          <p className="mt-1 text-xs font-medium text-muted-foreground sm:text-sm">{s.label}</p>
         </div>
       ))}
     </div>
