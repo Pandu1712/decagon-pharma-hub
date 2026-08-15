@@ -3,7 +3,6 @@ import { Clock, Globe, Mail, MapPin, Phone } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
-import { PageHeader } from "@/components/PageHeader";
 import { ContactForm } from "@/components/ContactForm";
 import { MapSection } from "@/components/MapSection";
 import { Reveal, SectionHeading } from "@/components/Reveal";
@@ -40,14 +39,7 @@ function ContactPage() {
     <>
       <Navbar />
       <main>
-        <PageHeader
-          eyebrow="Contact"
-          title="Get In Touch With DECAGON"
-          subtitle="For product enquiries, business enquiries and general information, connect with our team."
-          crumbs={[{ label: "Contact Us" }]}
-        />
-
-        <section id="contact" className="section-y bg-background">
+        <section id="contact" className="bg-background pt-28 pb-16 md:pt-36 md:pb-24">
           <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-[0.85fr_1fr] lg:px-8">
             <div>
               <SectionHeading

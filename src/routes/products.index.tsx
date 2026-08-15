@@ -15,7 +15,7 @@ const title = "Products | DECAGON Pharmaceutical Portfolio";
 const description =
   "Browse the DECAGON product portfolio by therapeutic category — tablets, capsules, syrups, injections, gels, creams and supplements.";
 
-type Search = { category?: string; q?: string; letter?: string };
+type Search = { category?: string; q?: string };
 
 const PAGE_SIZE = 12;
 
@@ -23,7 +23,6 @@ export const Route = createFileRoute("/products/")({
   validateSearch: (search: Record<string, unknown>): Search => ({
     ...(typeof search["category"] === "string" ? { category: search["category"] } : {}),
     ...(typeof search["q"] === "string" ? { q: search["q"] } : {}),
-    ...(typeof search["letter"] === "string" ? { letter: search["letter"] } : {}),
   }),
   head: () => ({
     meta: [
@@ -38,8 +37,6 @@ export const Route = createFileRoute("/products/")({
   component: ProductsPage,
 });
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
 function ProductsPage() {
   const search = Route.useSearch();
   const navigate = Route.useNavigate();
@@ -47,13 +44,11 @@ function ProductsPage() {
   const [visible, setVisible] = useState(PAGE_SIZE);
 
   const activeCategory = search.category as CategorySlug | undefined;
-  const activeLetter = search.letter;
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return products.filter((p) => {
       if (activeCategory && p.category !== activeCategory) return false;
-      if (activeLetter && !p.name.toUpperCase().startsWith(activeLetter)) return false;
       if (!q) return true;
       return (
         p.name.toLowerCase().includes(q) ||
@@ -62,7 +57,7 @@ function ProductsPage() {
         p.category.replace(/-/g, " ").includes(q)
       );
     });
-  }, [query, activeCategory, activeLetter]);
+  }, [query, activeCategory]);
 
   const setSearch = (next: Search) => {
     setVisible(PAGE_SIZE);
@@ -129,37 +124,6 @@ function ProductsPage() {
               ))}
             </div>
 
-            {/* Alphabetical */}
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-1.5">
-              <button
-                type="button"
-                onClick={() =>
-                  setSearch({ ...(activeCategory ? { category: activeCategory } : {}) })
-                }
-                className={cn(letterCls, !activeLetter && "bg-primary text-primary-foreground")}
-              >
-                All
-              </button>
-              {letters.map((l) => (
-                <button
-                  key={l}
-                  type="button"
-                  onClick={() =>
-                    setSearch({
-                      letter: l,
-                      ...(activeCategory ? { category: activeCategory } : {}),
-                    })
-                  }
-                  className={cn(
-                    letterCls,
-                    activeLetter === l && "bg-primary text-primary-foreground",
-                  )}
-                >
-                  {l}
-                </button>
-              ))}
-            </div>
-
             <p className="mt-8 text-center text-sm text-muted-foreground">
               Showing {Math.min(visible, filtered.length)} of {filtered.length} products
               {activeCategory ? ` in ${categories.find((c) => c.slug === activeCategory)?.name}` : ""}
@@ -215,5 +179,3 @@ function ProductsPage() {
 const chip =
   "inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-xs font-semibold text-foreground shadow-soft transition-colors hover:border-primary/40 hover:text-primary";
 const chipActive = "border-transparent bg-gradient-brand text-primary-foreground hover:text-primary-foreground";
-const letterCls =
-  "inline-flex size-8 items-center justify-center rounded-lg border border-border bg-card text-xs font-semibold text-foreground transition-colors hover:border-primary/40";

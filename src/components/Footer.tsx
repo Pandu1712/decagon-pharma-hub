@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
-import logo from "@/assets/decagon-logo.png.asset.json";
+import { BrandLogo } from "@/components/BrandLogo";
 import { categories } from "@/data/products";
 import { company } from "@/data/site";
 
@@ -9,14 +9,9 @@ export function Footer() {
     <footer className="bg-brand-blue-deep text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div>
-          <img
-            src={logo.url}
-            alt="DECAGON logo"
-            width={220}
-            height={49}
-            loading="lazy"
-            className="h-10 w-auto brightness-0 invert"
-          />
+          <div className="inline-block rounded-xl bg-white p-2.5 shadow-sm">
+            <BrandLogo />
+          </div>
           <p className="mt-4 text-sm font-semibold uppercase tracking-[0.24em] text-brand-amber">
             {company.tagline}
           </p>

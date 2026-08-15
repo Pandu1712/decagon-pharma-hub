@@ -97,7 +97,7 @@ export function HeroCarousel() {
               i === index && "ken-burns",
             )}
           />
-          <div className="absolute inset-0 bg-hero-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-900/40 to-slate-950/20" />
         </div>
       ))}
 

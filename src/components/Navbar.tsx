@@ -1,14 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
-import logo from "@/assets/decagon-logo.png.asset.json";
+import { BrandLogo } from "@/components/BrandLogo";
 import { categories, countByCategory } from "@/data/products";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
-  { label: "Quality", to: "/quality" },
   { label: "Why Decagon", to: "/about", hash: "why" },
   { label: "Reviews", to: "/", hash: "reviews" },
 ];
@@ -30,7 +29,7 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 w-full max-w-full transition-all duration-300",
         solid
           ? "border-b border-border/70 bg-background/92 backdrop-blur-md shadow-soft"
           : "bg-transparent",
@@ -38,16 +37,7 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex shrink-0 items-center" aria-label="DECAGON home">
-          <img
-            src={logo.url}
-            alt="DECAGON — Believed Quality logo"
-            width={220}
-            height={49}
-            className={cn(
-              "h-9 w-auto transition-all duration-300 md:h-10",
-              solid ? "" : "brightness-0 invert",
-            )}
-          />
+          <BrandLogo solid={solid} />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -62,6 +52,11 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
           >
             <Link
               to="/products"
+              activeProps={{
+                className: solid
+                  ? "text-primary bg-primary/10 font-bold"
+                  : "text-white bg-white/20 font-bold",
+              }}
               className={cn(
                 "flex items-center gap-1 rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors",
                 solid
@@ -76,7 +71,7 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
             </Link>
             <div
               className={cn(
-                "absolute left-1/2 top-full w-[680px] -translate-x-1/2 pt-3 transition-all duration-200",
+                "absolute left-1/2 top-full w-[680px] max-w-[calc(100vw-2rem)] -translate-x-1/2 pt-3 transition-all duration-200",
                 megaOpen
                   ? "visible opacity-100 translate-y-0"
                   : "invisible -translate-y-2 opacity-0",
@@ -88,6 +83,9 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
                     key={c.slug}
                     to="/products"
                     search={{ category: c.slug }}
+                    activeProps={{
+                      className: "bg-primary/10 text-primary font-bold",
+                    }}
                     className="group flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-secondary"
                     onClick={() => setMegaOpen(false)}
                   >
@@ -114,6 +112,9 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
         <div className="flex items-center gap-2">
           <Link
             to="/contact"
+            activeProps={{
+              className: "ring-2 ring-primary ring-offset-2",
+            }}
             className="hidden rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform duration-200 hover:-translate-y-0.5 sm:inline-flex"
           >
             Contact Us
@@ -137,13 +138,17 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
       {mobileOpen ? (
         <div className="max-h-[75vh] overflow-y-auto border-t border-border bg-background px-4 pb-8 pt-4 lg:hidden">
           <div className="flex flex-col">
-            {[{ label: "Home", to: "/" }, { label: "About Us", to: "/about" }, { label: "Products", to: "/products" }, { label: "Quality", to: "/quality" }, { label: "Contact Us", to: "/contact" }].map(
+            {[{ label: "Home", to: "/" }, { label: "About Us", to: "/about" }, { label: "Products", to: "/products" }, { label: "Contact Us", to: "/contact" }].map(
               (l) => (
                 <Link
                   key={l.label}
                   to={l.to}
+                  activeProps={{
+                    className: "text-primary bg-primary/10 border-l-4 border-primary pl-3 font-bold",
+                  }}
+                  activeOptions={l.to === "/" ? { exact: true } : { exact: false }}
                   onClick={() => setMobileOpen(false)}
-                  className="border-b border-border/70 py-3.5 text-base font-semibold text-foreground"
+                  className="border-b border-border/70 py-3.5 text-base font-semibold text-foreground transition-colors"
                 >
                   {l.label}
                 </Link>
@@ -159,6 +164,9 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
                 key={c.slug}
                 to="/products"
                 search={{ category: c.slug }}
+                activeProps={{
+                  className: "bg-primary/10 text-primary font-bold",
+                }}
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-3 rounded-xl bg-surface px-3 py-2.5 text-sm font-medium text-foreground"
               >
@@ -188,6 +196,12 @@ function NavItem({
     <Link
       to={to}
       {...(hash ? { hash } : {})}
+      activeProps={{
+        className: solid
+          ? "text-primary bg-primary/10 font-bold"
+          : "text-white bg-white/20 font-bold",
+      }}
+      activeOptions={to === "/" && !hash ? { exact: true } : { exact: false }}
       className={cn(
         "rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors",
         solid

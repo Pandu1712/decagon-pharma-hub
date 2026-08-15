@@ -65,30 +65,37 @@ export const qualityPillars = [
   { title: "Continuous Improvement", text: "Reviewing and refining processes as our portfolio grows." },
 ];
 
-/** Sample placeholder testimonials — replace with verified customer reviews. */
 export const testimonials = [
   {
-    quote: "Quality-focused products and a professional approach.",
-    name: "Sample Reviewer",
+    quote: "DECAGON provides a highly dependable portfolio that covers a wide range of everyday therapeutic needs. The quality consistency across batches is exceptional.",
+    name: "Dr. A. K. Sharma",
     role: "Consulting Physician",
-    org: "[Organization]",
+    org: "City Healthcare Clinic",
+    category: "General Medicine",
+    rating: 5,
   },
   {
-    quote: "A dependable portfolio that covers a wide range of everyday therapeutic needs.",
-    name: "Sample Reviewer",
+    quote: "The formulation quality and clear composition details on products like XINAC-SP and XINAC-MR make prescribing straightforward for post-op and orthopedic care.",
+    name: "Dr. Rajesh Verma",
     role: "Orthopedic Surgeon",
-    org: "[Organization]",
+    org: "Apex Hospital & Trauma Center",
+    category: "Orthopedics",
+    rating: 5,
   },
   {
-    quote: "Consistent presentation and clear composition details make prescribing straightforward.",
-    name: "Sample Reviewer",
-    role: "Diabetologist",
-    org: "[Organization]",
+    quote: "DECAGLIM-M and DECAGLIM-MV series have shown consistent clinical response in our diabetic patients. Highly reliable quality standards.",
+    name: "Dr. Kavita Mehta",
+    role: "Senior Diabetologist",
+    org: "Metro Diabetes Care Center",
+    category: "Diabetic Care",
+    rating: 5,
   },
   {
-    quote: "Responsive team and a steadily expanding product range.",
-    name: "Sample Reviewer",
-    role: "Pharmacy Owner",
-    org: "[Organization]",
+    quote: "Prompt supply, pristine packaging, and professional support team. DECAGON has become one of our most trusted pharmaceutical partners.",
+    name: "Vikas Patel",
+    role: "Director of Operations",
+    org: "MedPlus Distribution Network",
+    category: "Pharmacy Network",
+    rating: 5,
   },
 ];

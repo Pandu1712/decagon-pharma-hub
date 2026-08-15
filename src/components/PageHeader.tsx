@@ -13,7 +13,7 @@ export function PageHeader({
   crumbs?: { label: string; to?: string; search?: Record<string, string> }[];
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-blue-deep pb-16 pt-32 md:pb-20 md:pt-40">
+    <section className="relative overflow-hidden bg-brand-blue-deep pb-10 pt-24 md:pb-12 md:pt-28">
       <div className="absolute -right-24 -top-24 size-96 rounded-full bg-brand-purple/40 blur-3xl" />
       <div className="absolute -bottom-32 left-1/3 size-80 rounded-full bg-brand-teal/25 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
