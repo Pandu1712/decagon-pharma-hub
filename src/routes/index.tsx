@@ -10,7 +10,6 @@ import {
   FeaturedProducts,
   PortfolioVisualSection,
   QualitySection,
-  TestimonialCarousel,
   WhyChooseUs,
 } from "@/components/sections";
 
@@ -48,7 +47,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
-      <Navbar transparent />
+      <Navbar />
       <main>
         <h1 className="sr-only">
           DECAGON — Believed Quality, pharmaceutical healthcare solutions
@@ -60,7 +59,6 @@ function Home() {
         <FeaturedProducts />
         <QualitySection />
         <PortfolioVisualSection />
-        <TestimonialCarousel />
         <CTASection />
       </main>
       <Footer />

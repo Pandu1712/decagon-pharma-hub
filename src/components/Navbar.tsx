@@ -9,7 +9,6 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Why Decagon", to: "/about", hash: "why" },
-  { label: "Reviews", to: "/", hash: "reviews" },
 ];
 
 export function Navbar({ transparent = false }: { transparent?: boolean }) {

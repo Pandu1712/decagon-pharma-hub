@@ -8,11 +8,14 @@ export function ProductCard({ product, className }: { product: Product; classNam
   const category = getCategory(product.category);
 
   return (
-    <article
+    <Link
+      to="/products/$slug"
+      params={{ slug: product.slug }}
       className={cn(
-        "card-lift group flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft transition-all hover:border-primary/30 hover:shadow-lift",
+        "card-lift group flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft transition-all hover:border-primary/40 hover:shadow-lift cursor-pointer text-left focus:outline-hidden",
         className,
       )}
+      aria-label={`View ${product.name} details`}
     >
       {/* Packaging photo / header area with soft, light pastel tint */}
       <div
@@ -21,17 +24,34 @@ export function ProductCard({ product, className }: { product: Product; classNam
           headerGradient(category.accent),
         )}
       >
-        <div className="relative flex flex-col items-center text-center">
-          <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-background/90 shadow-xs transition-transform group-hover:scale-105">
-            <Pill className="size-5 text-primary" />
+        {product.image ? (
+          <div className="relative flex h-full w-full items-center justify-center p-2.5">
+            <img
+              src={product.image}
+              alt={`${product.name} packaging`}
+              className="max-h-28 w-auto max-w-full rounded-lg object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div className="relative flex flex-col items-center text-center">
+            <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-background/90 shadow-xs transition-transform group-hover:scale-105">
+              <Pill className="size-5 text-primary" />
+            </span>
+            <span className="mt-2 text-xs font-extrabold uppercase tracking-wider text-foreground">
+              {product.name || "DECAGON PRODUCT"}
+            </span>
+            <span className="mt-0.5 text-[10px] font-semibold text-muted-foreground">
+              {product.form}
+            </span>
+          </div>
+        )}
+
+        {product.details && (
+          <span className="absolute top-2.5 right-2.5 rounded-full bg-primary/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary border border-primary/20">
+            Rich Details
           </span>
-          <span className="mt-2 text-xs font-extrabold uppercase tracking-wider text-foreground">
-            {product.name || "DECAGON PRODUCT"}
-          </span>
-          <span className="mt-0.5 text-[10px] font-semibold text-muted-foreground">
-            {product.form}
-          </span>
-        </div>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-5 bg-card">
@@ -54,17 +74,13 @@ export function ProductCard({ product, className }: { product: Product; classNam
           <span className="rounded-full bg-secondary/80 px-3 py-1 text-xs font-semibold text-secondary-foreground">
             {product.form}
           </span>
-          <Link
-            to="/products/$slug"
-            params={{ slug: product.slug }}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-brand-purple"
-          >
+          <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors group-hover:text-brand-purple">
             View Details
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
 

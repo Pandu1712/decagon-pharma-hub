@@ -29,7 +29,6 @@ export function Footer() {
             <li><Link to="/about" className="hover:text-brand-teal">About Us</Link></li>
             <li><Link to="/products" className="hover:text-brand-teal">Products</Link></li>
             <li><Link to="/quality" className="hover:text-brand-teal">Quality</Link></li>
-            <li><Link to="/" hash="reviews" className="hover:text-brand-teal">Reviews</Link></li>
             <li><Link to="/contact" className="hover:text-brand-teal">Contact</Link></li>
           </ul>
         </div>
