@@ -47,13 +47,15 @@ function QualityPage() {
             />
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {qualityPillars.map((p, i) => (
-                <Reveal key={p.title} delay={i * 70}>
-                  <div className="card-lift h-full rounded-2xl border border-border bg-surface p-7 shadow-soft">
-                    <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-orange">
-                      0{i + 1}
-                    </span>
-                    <h3 className="mt-3 text-lg font-bold text-foreground">{p.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.text}</p>
+                <Reveal key={p.title} delay={i * 70} direction={i % 2 === 0 ? "left" : "down"}>
+                  <div className="card-lift h-full flex flex-col justify-between rounded-2xl border border-border bg-surface p-7 shadow-soft">
+                    <div>
+                      <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-orange">
+                        0{i + 1}
+                      </span>
+                      <h3 className="mt-3 text-lg font-bold text-foreground">{p.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground text-justify">{p.text}</p>
+                    </div>
                   </div>
                 </Reveal>
               ))}

@@ -174,6 +174,7 @@ function ProductDetail() {
             { label: category.name, to: "/products", search: { category: category.slug } },
             { label: product.name },
           ]}
+          medicineForm={product.form}
         />
 
         <section className="section-y bg-background">

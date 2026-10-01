@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { HeartbeatLine } from "@/components/HeartbeatLine";
 import {
   AboutSection,
   CTASection,
@@ -53,6 +54,7 @@ function Home() {
           DECAGON — Believed Quality, pharmaceutical healthcare solutions
         </h1>
         <HeroCarousel />
+        <HeartbeatLine />
         <AboutSection />
         <WhyChooseUs />
         <CategorySection />

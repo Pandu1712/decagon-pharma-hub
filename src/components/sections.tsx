@@ -31,9 +31,9 @@ import { cn } from "@/lib/utils";
 
 export function AboutSection() {
   return (
-    <section id="about" className="section-y bg-background">
+    <section id="about" className="pt-2 sm:pt-4 pb-14 sm:pb-20 bg-background">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
-        <Reveal className="relative h-full flex flex-col justify-center">
+        <Reveal direction="left" className="relative h-full flex flex-col justify-center">
           <div className="absolute -left-6 -top-6 hidden size-40 rounded-3xl bg-gradient-accent opacity-20 blur-2xl lg:block" />
           <div className="relative overflow-hidden rounded-3xl shadow-lift">
             <img
@@ -61,7 +61,7 @@ export function AboutSection() {
             subtitle="DECAGON is committed to delivering quality-focused pharmaceutical and healthcare solutions across a diverse range of therapeutic categories. Our growing product portfolio reflects our focus on reliability, consistency and better healthcare outcomes."
           />
           <StatsSection />
-          <Reveal delay={150}>
+          <Reveal direction="down" delay={150}>
             <Link
               to="/about"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
@@ -77,7 +77,7 @@ export function AboutSection() {
 }
 
 export function StatsSection() {
-  const { ref, shown } = useReveal();
+  const { ref, shown } = useReveal({ once: true });
   return (
     <div ref={ref} className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
       {stats.map((s) => (
@@ -124,22 +124,24 @@ export function WhyChooseUs() {
           {whyDecagon.map((item, i) => {
             const Icon = whyIcons[i % whyIcons.length]!;
             return (
-              <Reveal key={item.title} delay={i * 70} as="article">
-                <div className="card-lift h-full rounded-2xl border border-border/60 bg-gradient-to-br from-card via-surface/60 to-primary/[0.03] p-7 shadow-soft transition-all hover:border-primary/30 hover:shadow-lift">
-                  <span
-                    className={cn(
-                      "inline-flex size-12 items-center justify-center rounded-xl text-primary-foreground shadow-xs",
-                      item.accent === "purple" && "bg-brand-purple",
-                      item.accent === "teal" && "bg-brand-teal",
-                      item.accent === "orange" && "bg-brand-orange",
-                      item.accent === "amber" && "bg-brand-amber text-foreground",
-                      item.accent === "blue" && "bg-brand-blue",
-                    )}
-                  >
-                    <Icon className="size-6" />
-                  </span>
-                  <h3 className="mt-5 text-lg font-bold text-foreground">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+              <Reveal key={item.title} delay={(i % 3) * 70} direction={i % 2 === 0 ? "left" : "down"} as="article">
+                <div className="card-lift h-full flex flex-col justify-between rounded-2xl border border-border/60 bg-gradient-to-br from-card via-surface/60 to-primary/[0.03] p-7 shadow-soft transition-all hover:border-primary/30 hover:shadow-lift">
+                  <div>
+                    <span
+                      className={cn(
+                        "inline-flex size-12 items-center justify-center rounded-xl text-primary-foreground shadow-xs",
+                        item.accent === "purple" && "bg-brand-purple",
+                        item.accent === "teal" && "bg-brand-teal",
+                        item.accent === "orange" && "bg-brand-orange",
+                        item.accent === "amber" && "bg-brand-amber text-foreground",
+                        item.accent === "blue" && "bg-brand-blue",
+                      )}
+                    >
+                      <Icon className="size-6" />
+                    </span>
+                    <h3 className="mt-5 text-lg font-bold text-foreground">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground text-justify">{item.text}</p>
+                  </div>
                 </div>
               </Reveal>
             );
@@ -163,7 +165,7 @@ export function CategorySection() {
         />
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {categories.map((c, i) => (
-            <Reveal key={c.slug} delay={i * 50}>
+            <Reveal key={c.slug} delay={(i % 5) * 50} direction={i % 2 === 0 ? "left" : "down"}>
               <Link
                 to="/products"
                 search={{ category: c.slug }}
@@ -174,7 +176,7 @@ export function CategorySection() {
                   <h3 className="mt-4 text-base font-bold leading-snug text-foreground group-hover:text-primary">
                     {c.name}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{c.short}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground text-justify">{c.short}</p>
                 </div>
                 <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                   {countByCategory(c.slug)} Products
@@ -201,7 +203,7 @@ export function FeaturedProducts() {
             title="Featured Products"
             subtitle="A selection from across the DECAGON portfolio."
           />
-          <Reveal>
+          <Reveal direction="left">
             <Link
               to="/products"
               className="inline-flex items-center gap-2 rounded-full border border-primary/25 px-5 py-3 text-sm font-semibold text-primary transition-colors hover:bg-secondary"
@@ -212,13 +214,15 @@ export function FeaturedProducts() {
           </Reveal>
         </div>
 
-        <div className="mt-12 -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 sm:mx-0 sm:px-0">
-          {featuredProducts.map((p) => (
-            <div key={p.slug} className="w-[19rem] shrink-0 snap-start">
-              <ProductCard product={p} />
-            </div>
-          ))}
-        </div>
+        <Reveal direction="left" delay={100}>
+          <div className="mt-8 -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pt-4 pb-6 sm:mx-0 sm:px-2">
+            {featuredProducts.map((p) => (
+              <div key={p.slug} className="w-[19rem] shrink-0 snap-start pt-1">
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -251,11 +255,13 @@ export function QualitySection() {
           {qualityPillars.map((p, i) => {
             const Icon = pillarIcons[i % pillarIcons.length]!;
             return (
-              <Reveal key={p.title} delay={i * 80}>
-                <div className="h-full rounded-2xl glass-panel p-6">
-                  <Icon className="size-7 text-brand-amber" />
-                  <h3 className="mt-4 text-base font-bold text-primary-foreground">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-primary-foreground/75">{p.text}</p>
+              <Reveal key={p.title} delay={i * 80} direction={i < 2 ? "left" : "down"}>
+                <div className="h-full flex flex-col justify-between rounded-2xl glass-panel p-6">
+                  <div>
+                    <Icon className="size-7 text-brand-amber" />
+                    <h3 className="mt-4 text-base font-bold text-primary-foreground">{p.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-primary-foreground/75 text-justify">{p.text}</p>
+                  </div>
                 </div>
               </Reveal>
             );
@@ -272,7 +278,7 @@ export function PortfolioVisualSection() {
   return (
     <section className="section-y bg-background">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <Reveal className="relative order-2 lg:order-1">
+        <Reveal direction="left" className="relative order-2 lg:order-1">
           <img
             src={hero3}
             alt="Tablets, capsules and syrup bottles from the DECAGON portfolio"
@@ -300,7 +306,7 @@ export function PortfolioVisualSection() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {["Tablets & Capsules", "Syrups & Oral Solutions", "Injections", "Topical & Personal Care"].map(
               (t, i) => (
-                <Reveal key={t} delay={i * 70}>
+                <Reveal key={t} delay={i * 70} direction={i % 2 === 0 ? "left" : "down"}>
                   <div className="rounded-xl border border-border bg-surface px-5 py-4 text-sm font-semibold text-foreground shadow-soft">
                     {t}
                   </div>
@@ -335,7 +341,7 @@ export function TestimonialCarousel() {
           subtitle="Feedback and experiences shared by physicians, specialists and pharmacy partners across our network."
         />
 
-        <Reveal className="mx-auto mt-12 max-w-4xl">
+        <Reveal direction="left" className="mx-auto mt-12 max-w-4xl">
           {/* Main Featured Spotlight Review Card */}
           <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-card via-surface/90 to-primary/[0.04] p-8 shadow-lift transition-all duration-300 md:p-12">
             {/* Background Decorative Quote Emblem */}
@@ -358,7 +364,7 @@ export function TestimonialCarousel() {
               ) : null}
             </div>
 
-            <p className="relative z-10 mt-6 font-display text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+            <p className="relative z-10 mt-6 font-display text-xl font-medium leading-relaxed text-foreground md:text-2xl text-justify">
               “{t.quote}”
             </p>
 
@@ -430,7 +436,7 @@ export function TestimonialCarousel() {
                       ))}
                     </span>
                   </div>
-                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">“{item.quote}”</p>
+                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground text-justify">“{item.quote}”</p>
                 </div>
                 <p className="mt-3 text-[11px] font-semibold text-primary">{item.role}</p>
               </button>
@@ -446,28 +452,36 @@ export function TestimonialCarousel() {
 
 export function CTASection() {
   return (
-    <section className="overflow-hidden px-4 pb-12 sm:px-6 lg:px-8">
-      <Reveal className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-gradient-brand px-6 py-12 text-center shadow-lift md:px-14 md:py-16">
-        <h2 className="mx-auto max-w-3xl text-3xl font-bold leading-tight text-primary-foreground md:text-4xl">
-          Looking for Reliable Pharmaceutical Solutions?
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85">
-          Connect with DECAGON to learn more about our products and healthcare solutions.
-        </p>
-        <div className="mt-9 flex flex-wrap justify-center gap-3">
-          <Link
-            to="/products"
-            className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3.5 text-sm font-semibold text-primary shadow-soft transition-transform hover:-translate-y-0.5"
-          >
-            Explore Products
-            <ArrowRight className="size-4" />
-          </Link>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-white/10"
-          >
-            Contact Us
-          </Link>
+    <section className="overflow-hidden px-4 pb-8 sm:px-6 sm:pb-10 lg:px-8">
+      <Reveal
+        direction="down"
+        className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-gradient-brand px-6 py-7 shadow-lift sm:px-10 sm:py-8 lg:px-12"
+      >
+        <div className="flex flex-col items-center justify-between gap-6 text-center lg:flex-row lg:text-left">
+          <div className="min-w-0 max-w-2xl lg:max-w-3xl">
+            <h2 className="text-xl font-bold tracking-tight text-primary-foreground sm:text-2xl lg:text-3xl lg:whitespace-nowrap">
+              Looking for Reliable Pharmaceutical Solutions?
+            </h2>
+            <p className="mt-2 text-sm text-primary-foreground/85 sm:text-base">
+              Connect with DECAGON to learn more about our products and healthcare solutions.
+            </p>
+          </div>
+
+          <div className="flex shrink-0 flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 rounded-full bg-background px-5 py-3 text-sm font-semibold text-primary shadow-soft transition-transform hover:-translate-y-0.5"
+            >
+              <span>Explore Products</span>
+              <ArrowRight className="size-4" />
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-white/10"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       </Reveal>
     </section>

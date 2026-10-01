@@ -54,21 +54,23 @@ export function ProductCard({ product, className }: { product: Product; classNam
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-5 bg-card">
-        <div className="flex items-center gap-2">
-          <span className={cn("size-2 rounded-full shadow-xs", accentDot(category.accent))} />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-            {category.name}
-          </span>
+      <div className="flex flex-1 flex-col justify-between p-5 bg-card">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className={cn("size-2 rounded-full shadow-xs", accentDot(category.accent))} />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              {category.name}
+            </span>
+          </div>
+
+          <h3 className="mt-3 text-lg font-bold leading-tight text-foreground transition-colors group-hover:text-primary">
+            {product.name || "Unnamed Product"}
+          </h3>
+
+          <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground text-justify">
+            {product.composition}
+          </p>
         </div>
-
-        <h3 className="mt-3 text-lg font-bold leading-tight text-foreground transition-colors group-hover:text-primary">
-          {product.name || "Unnamed Product"}
-        </h3>
-
-        <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-          {product.composition}
-        </p>
 
         <div className="mt-4 flex items-center justify-between gap-3 pt-3 border-t border-border/40">
           <span className="rounded-full bg-secondary/80 px-3 py-1 text-xs font-semibold text-secondary-foreground">

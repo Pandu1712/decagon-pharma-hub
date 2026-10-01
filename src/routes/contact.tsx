@@ -50,7 +50,7 @@ function ContactPage() {
               />
               <div className="mt-10 space-y-4">
                 {details.map((d, i) => (
-                  <Reveal key={d.label} delay={i * 60}>
+                  <Reveal key={d.label} delay={i * 60} direction="left">
                     <div className="flex gap-4 rounded-2xl border border-border bg-surface p-5 shadow-soft">
                       <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-medical text-primary-foreground">
                         <d.icon className="size-5" />
@@ -67,7 +67,7 @@ function ContactPage() {
               </div>
             </div>
 
-            <Reveal delay={100}>
+            <Reveal delay={100} direction="down">
               <ContactForm />
             </Reveal>
           </div>

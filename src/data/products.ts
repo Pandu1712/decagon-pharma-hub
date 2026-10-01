@@ -1,3 +1,8 @@
+import decaglimM2Img from "@/assets/product 1.jpeg";
+import calziumD3NanoImg from "@/assets/product 2.jpeg";
+import xinacTh8Img from "@/assets/product 3.jpeg";
+import decoferCapImg from "@/assets/product 5.jpeg";
+
 export type CategorySlug =
   | "diabetic-care"
   | "pain-orthopedic-care"
@@ -545,6 +550,87 @@ const xinacGelDetails: ProductDetailInfo = {
     "Indications: Sprains, strains, osteoarthritis of superficial joints, acute backache, and sports trauma.",
   disclaimer:
     "XINAC Gel is a topical analgesic formulation for external use only. Use under medical guidance.",
+};
+
+const xinacTh8Details: ProductDetailInfo = {
+  overview:
+    "XINAC-TH 8 Tablets combine Aceclofenac (100 mg) and Thiocolchicoside (8 mg) to deliver dual therapeutic power against severe pain and acute muscle contractures. Aceclofenac provides targeted anti-inflammatory and analgesic efficacy with high chondroprotection, while Thiocolchicoside offers non-sedating skeletal muscle relaxation via competitive GABA-A and glycinergic receptor activation.",
+  targetAudience:
+    "Indicated for acute, painful musculoskeletal conditions associated with severe muscle spasms, including acute lumbago (low back pain), cervical spondylosis, torticollis (stiff neck), post-traumatic and post-operative spasms, and painful osteoarthritis with muscular contracture.",
+  keyFeatures: [
+    {
+      title: "Dual Therapeutic Power",
+      description:
+        "Synergistic pairing of selective NSAID Aceclofenac (100 mg) and muscle relaxant Thiocolchicoside (8 mg) for comprehensive pain-spasm relief.",
+    },
+    {
+      title: "Breaks Spasm-Pain-Spasm Cycle",
+      description:
+        "Inhibits localized inflammatory cascades at the affected tissue while concurrently suppressing reflex muscle hyperactivity.",
+    },
+    {
+      title: "Non-Sedating Muscle Relaxant",
+      description:
+        "Thiocolchicoside eases painful muscle spasms without causing daytime drowsiness, central sedation, or motor impairment.",
+    },
+    {
+      title: "Restores Range of Motion",
+      description:
+        "Rapidly relieves muscle rigidity and stiffness, accelerating return to normal physical activity and rehabilitation.",
+    },
+  ],
+  compositionList: [
+    {
+      ingredient: "Aceclofenac",
+      strength: "100 mg",
+      role: "Potent NSAID that selectively suppresses COX-2 and inflammatory cytokines with excellent gastric safety",
+    },
+    {
+      ingredient: "Thiocolchicoside",
+      strength: "8 mg",
+      role: "Semisynthetic muscle relaxant acting as a selective agonist at inhibitory GABA-A and glycine receptors",
+    },
+  ],
+  keyBenefits: [
+    "Dual-action formulation tackling both inflammatory pain and underlying skeletal muscle spasm",
+    "Rapid onset of relief in acute low back pain, cervical spasm, and severe musculoskeletal stiffness",
+    "Non-sedating profile preserves daytime alertness and cognitive performance during treatment",
+    "Superior gastric tolerability compared to traditional diclofenac combinations",
+    "Manufactured in WHO-GMP certified facilities under strict Schedule H pharmaceutical standards",
+    "Accelerates rehabilitation and improves spinal mobility and physical flexibility",
+  ],
+  moleculeBenefits: [
+    {
+      molecule: "Aceclofenac",
+      strength: "100 mg",
+      points: [
+        "Selectively suppresses prostaglandin synthesis by inhibiting COX-2 enzyme with high safety",
+        "Significantly decreases pro-inflammatory cytokines IL-1β and TNF-α at the site of trauma",
+        "Demonstrates superior chondroprotection and mucosal safety compared to conventional NSAIDs",
+      ],
+    },
+    {
+      molecule: "Thiocolchicoside",
+      strength: "8 mg",
+      points: [
+        "Interacts selectively with GABA-A and strychnine-sensitive glycine receptors in the spinal cord",
+        "Suppresses involuntary muscular contracture without central sedation or loss of muscle tone",
+        "Facilitates rapid restoration of joint range of motion and eases tension in acute spasm",
+      ],
+    },
+  ],
+  recommendedUsage: {
+    dosage: "Adults: 1 tablet twice daily after meals, or as prescribed by an orthopedic physician",
+    administration: "Swallow whole with a full glass of water after meals. Do not chew, break, or crush.",
+    duration: "Short-term treatment of acute painful muscle contracture (typically 5 to 7 days) as directed.",
+    precautions: "Schedule H prescription drug. Not to be sold by retail without the prescription of a Registered Medical Practitioner. Contraindicated in pregnancy, lactation, or patients with seizure disorders.",
+  },
+  scientificClaim:
+    "XINAC-TH 8 — Dual Power to Break Severe Pain & Debilitating Muscle Spasms.",
+  clinicalNote:
+    "Indications: Acute lumbago (low back pain), cervical spondylitis, torticollis, sprains and strains, and painful musculoskeletal rigidity.",
+  disclaimer:
+    "XINAC-TH 8 is a Schedule H prescription drug. Use strictly under the guidance of a qualified healthcare practitioner.",
 };
 
 const urinarDetails: ProductDetailInfo = {
@@ -3029,7 +3115,8 @@ const raw: Omit<Product, "slug">[] = [
     form: "Tablets",
     category: "diabetic-care",
     featured: true,
-    packaging: "10 x 10 Tablets / Blister Pack",
+    packaging: "10 x 15 Tablets",
+    image: decaglimM2Img,
     details: decaglimM2Details,
   },
   {
@@ -3089,7 +3176,16 @@ const raw: Omit<Product, "slug">[] = [
     details: xinacMrDetails,
   },
   { name: "XINAC-TH 4", composition: "Aceclofenac 100 mg + Thiocolchicoside 4 mg", form: "Tablet", category: "pain-orthopedic-care" },
-  { name: "XINAC-TH 8", composition: "Aceclofenac 100 mg + Thiocolchicoside 8 mg", form: "Tablet", category: "pain-orthopedic-care" },
+  {
+    name: "XINAC-TH 8",
+    composition: "Aceclofenac 100 mg + Thiocolchicoside 8 mg",
+    form: "Tablets",
+    category: "pain-orthopedic-care",
+    featured: true,
+    packaging: "10 x 10 Tablets",
+    image: xinacTh8Img,
+    details: xinacTh8Details,
+  },
   { name: "XINAC-PTC", composition: "Aceclofenac 100 mg + Paracetamol 325 mg + Trypsin Chymotrypsin 150000 AU", form: "Tablet", category: "pain-orthopedic-care" },
   {
     name: "XINAC-Gel",
@@ -3116,11 +3212,12 @@ const raw: Omit<Product, "slug">[] = [
   },
   {
     name: "CALZIUM-D3 NANO",
-    composition: "Cholecalciferol I.P. 60000 IU",
+    composition: "Cholecalciferol (Vitamin D3) Oral Solution 60,000 I.U.",
     form: "Oral Solution",
     category: "vitamins-supplements",
     featured: true,
-    packaging: "4 x 5 ml Ready-to-Drink Oral Bottles",
+    packaging: "4 x 5 ml Bottles (Nano Shots)",
+    image: calziumD3NanoImg,
     details: calziumD3NanoDetails,
   },
   {
@@ -3157,7 +3254,8 @@ const raw: Omit<Product, "slug">[] = [
     form: "Soft Gelatin Capsules",
     category: "vitamins-supplements",
     featured: true,
-    packaging: "10 x 10 Softgel Capsules / Blister Pack",
+    packaging: "10 x 10 Capsules",
+    image: decoferCapImg,
     details: decoferCapDetails,
   },
   {
@@ -3359,6 +3457,18 @@ export const getProduct = (slug: string) => {
   }
   if (slug === "decofer" || slug === "decofer-oral-suspension") {
     return products.find((p) => p.slug === "decofer-syp" || p.slug === "decofer-cap" || p.slug === "decofer");
+  }
+  if (slug === "decofer-cap" || slug === "decofer-capsules" || slug === "decofer-capsule") {
+    return products.find((p) => p.slug === "decofer-cap");
+  }
+  if (slug === "xinac-th-8" || slug === "xinac-th8" || slug === "xinac-th") {
+    return products.find((p) => p.slug === "xinac-th-8" || p.slug === "xinac-th8");
+  }
+  if (slug === "calzium-d3-nano" || slug === "calzium-d3" || slug === "calzium-nano") {
+    return products.find((p) => p.slug === "calzium-d3-nano");
+  }
+  if (slug === "decaglim-m2" || slug === "decaglim-m-2") {
+    return products.find((p) => p.slug === "decaglim-m2");
   }
   if (slug === "cosywash") {
     return products.find((p) => p.slug === "cassywash" || p.slug === "cosywash");

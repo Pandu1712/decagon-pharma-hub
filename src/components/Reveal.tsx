@@ -2,23 +2,41 @@ import type { ReactNode } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
+export type RevealDirection = "up" | "down" | "left" | "right" | "none";
+
 export function Reveal({
   children,
   className,
   delay = 0,
+  direction = "up",
+  once = false,
   as: As = "div",
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
-  as?: "div" | "section" | "li" | "article";
+  direction?: RevealDirection;
+  once?: boolean;
+  as?: "div" | "section" | "li" | "article" | "aside" | "header" | "footer";
 }) {
-  const { ref, shown } = useReveal();
+  const { ref, shown } = useReveal({ once });
+
+  const directionClass =
+    direction === "left"
+      ? "reveal-left"
+      : direction === "right"
+        ? "reveal-right"
+        : direction === "down"
+          ? "reveal-down"
+          : direction === "up"
+            ? "reveal-up"
+            : "reveal";
+
   return (
     <As
       ref={ref as never}
       style={{ transitionDelay: `${delay}ms` }}
-      className={cn("reveal", shown && "reveal-in", className)}
+      className={cn(directionClass, shown && "reveal-in", className)}
     >
       {children}
     </As>
@@ -31,15 +49,18 @@ export function SectionHeading({
   subtitle,
   align = "center",
   invert = false,
+  direction = "down",
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   align?: "center" | "left";
   invert?: boolean;
+  direction?: RevealDirection;
 }) {
   return (
     <Reveal
+      direction={direction}
       className={cn(
         "max-w-3xl",
         align === "center" ? "mx-auto text-center" : "text-left",
@@ -68,7 +89,7 @@ export function SectionHeading({
       {subtitle ? (
         <p
           className={cn(
-            "mt-4 text-base leading-relaxed md:text-lg",
+            "mt-4 text-base leading-relaxed md:text-lg text-justify",
             invert ? "text-primary-foreground/80" : "text-muted-foreground",
           )}
         >
