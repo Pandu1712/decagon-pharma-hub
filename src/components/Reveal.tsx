@@ -80,7 +80,7 @@ export function SectionHeading({
       ) : null}
       <h2
         className={cn(
-          "mt-5 text-3xl font-bold leading-[1.12] md:text-5xl",
+          "mt-2.5 text-2xl font-bold leading-[1.15] sm:text-3xl md:text-4xl",
           invert ? "text-primary-foreground" : "text-foreground",
         )}
       >
@@ -89,7 +89,7 @@ export function SectionHeading({
       {subtitle ? (
         <p
           className={cn(
-            "mt-4 text-base leading-relaxed md:text-lg text-justify",
+            "mt-2 text-sm leading-relaxed md:text-base text-justify",
             invert ? "text-primary-foreground/80" : "text-muted-foreground",
           )}
         >

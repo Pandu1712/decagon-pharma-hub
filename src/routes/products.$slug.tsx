@@ -179,11 +179,11 @@ function ProductDetail() {
 
         <section className="section-y bg-background">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] xl:gap-14">
+            <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] xl:gap-8">
               {/* Left Column: Visual Presentation Card & Quick Info */}
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <Reveal>
-                  <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-card via-surface/60 to-primary/[0.04] p-8 shadow-soft">
+                  <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-card via-surface/60 to-primary/[0.04] p-5 sm:p-6 shadow-soft">
                     {/* Background subtle radial glow */}
                     <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full bg-primary/10 blur-3xl" />
 
@@ -204,7 +204,7 @@ function ProductDetail() {
                       </div>
                     </div>
 
-                    <div className="mt-8 flex flex-col items-center justify-center text-center">
+                    <div className="mt-4 flex flex-col items-center justify-center text-center">
                       {product.image ? (
                         <div className="relative flex w-full max-w-sm items-center justify-center rounded-2xl bg-surface/90 p-4 border border-border/70 shadow-soft overflow-hidden group">
                           <img
@@ -231,27 +231,27 @@ function ProductDetail() {
                     </div>
 
                     {/* Quick highlights grid */}
-                    <dl className="mt-8 grid grid-cols-2 gap-3 border-t border-border/60 pt-6">
-                      <div className="rounded-xl border border-border/50 bg-background/80 p-3.5 text-left">
+                    <dl className="mt-4 grid grid-cols-2 gap-2.5 border-t border-border/60 pt-4">
+                      <div className="rounded-xl border border-border/50 bg-background/80 p-3 text-left">
                         <dt className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                           Dosage Form
                         </dt>
-                        <dd className="mt-1 text-xs sm:text-sm font-bold text-foreground">
+                        <dd className="mt-0.5 text-xs sm:text-sm font-bold text-foreground">
                           {product.form}
                         </dd>
                       </div>
-                      <div className="rounded-xl border border-border/50 bg-background/80 p-3.5 text-left">
+                      <div className="rounded-xl border border-border/50 bg-background/80 p-3 text-left">
                         <dt className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                           Packaging
                         </dt>
-                        <dd className="mt-1 text-xs sm:text-sm font-bold text-foreground truncate">
+                        <dd className="mt-0.5 text-xs sm:text-sm font-bold text-foreground truncate">
                           {product.packaging ?? "Standard Pack"}
                         </dd>
                       </div>
                     </dl>
 
                     {/* Quick action buttons */}
-                    <div className="mt-6 flex flex-col gap-2.5">
+                    <div className="mt-4 flex flex-col gap-2">
                       <button
                         type="button"
                         onClick={() => setEnquiryOpen((v) => !v)}
@@ -290,7 +290,7 @@ function ProductDetail() {
               </div>
 
               {/* Right Column: Interactive Topics (Overview, Key Features, Composition, Benefits, Usage) */}
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {/* Topic Navigation Tabs */}
                 <Reveal>
                   <div className="flex items-center gap-1.5 overflow-x-auto rounded-2xl border border-border/80 bg-surface/80 p-1.5 shadow-xs">
@@ -303,7 +303,7 @@ function ProductDetail() {
                           type="button"
                           onClick={() => setActiveTopic(t.id)}
                           className={cn(
-                            "flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all",
+                            "flex shrink-0 items-center gap-2 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-bold transition-all",
                             isActive
                               ? "bg-card text-primary shadow-soft border border-border/60"
                               : "text-muted-foreground hover:bg-card/50 hover:text-foreground",
@@ -320,7 +320,7 @@ function ProductDetail() {
                 </Reveal>
 
                 {/* Active Topic Content Panel */}
-                <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+                <div className="rounded-3xl border border-border/80 bg-card p-5 sm:p-6 shadow-soft">
                   {/* TOPIC 1: OVERVIEW */}
                   {activeTopic === "overview" && (
                     <div className="space-y-6 animate-in fade-in duration-300">
@@ -936,7 +936,7 @@ function ProductDetail() {
                   <ArrowRight className="size-4" />
                 </Link>
               </div>
-              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {related.map((p) => (
                   <ProductCard key={p.slug} product={p} />
                 ))}

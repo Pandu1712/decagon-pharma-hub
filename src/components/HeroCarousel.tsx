@@ -129,7 +129,7 @@ export function HeroCarousel() {
 
   return (
     <section
-      className="relative min-h-[520px] lg:min-h-[580px] xl:min-h-[620px] w-full overflow-hidden bg-white"
+      className="relative min-h-[440px] lg:min-h-[480px] xl:min-h-[520px] w-full overflow-hidden bg-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-label="DECAGON pharmaceutical highlights"
@@ -215,7 +215,7 @@ export function HeroCarousel() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 mx-auto flex min-h-[520px] lg:min-h-[580px] xl:min-h-[620px] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8 pt-16 lg:pt-20 pb-20 lg:pb-24">
+      <div className="relative z-10 mx-auto flex min-h-[440px] lg:min-h-[480px] xl:min-h-[520px] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8 pt-10 lg:pt-12 pb-10 lg:pb-12">
         <div className="max-w-2xl xl:max-w-3xl">
           {heroSlides.map((slide, i) => (
             <div

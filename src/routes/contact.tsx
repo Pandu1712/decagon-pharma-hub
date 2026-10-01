@@ -39,8 +39,8 @@ function ContactPage() {
     <>
       <Navbar />
       <main>
-        <section id="contact" className="bg-background pt-28 pb-16 md:pt-36 md:pb-24">
-          <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-[0.85fr_1fr] lg:px-8">
+        <section id="contact" className="bg-background pt-20 pb-8 md:pt-24 md:pb-10">
+          <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1fr] lg:px-8">
             <div>
               <SectionHeading
                 align="left"
@@ -48,7 +48,7 @@ function ContactPage() {
                 title="Get In Touch With DECAGON"
                 subtitle="For product enquiries, business enquiries and general information, connect with our team."
               />
-              <div className="mt-10 space-y-4">
+              <div className="mt-5 space-y-3">
                 {details.map((d, i) => (
                   <Reveal key={d.label} delay={i * 60} direction="left">
                     <div className="flex gap-4 rounded-2xl border border-border bg-surface p-5 shadow-soft">

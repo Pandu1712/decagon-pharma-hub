@@ -31,7 +31,7 @@ import { cn } from "@/lib/utils";
 
 export function AboutSection() {
   return (
-    <section id="about" className="pt-2 sm:pt-4 pb-14 sm:pb-20 bg-background">
+    <section id="about" className="py-6 sm:py-8 bg-background">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
         <Reveal direction="left" className="relative h-full flex flex-col justify-center">
           <div className="absolute -left-6 -top-6 hidden size-40 rounded-3xl bg-gradient-accent opacity-20 blur-2xl lg:block" />
@@ -64,7 +64,7 @@ export function AboutSection() {
           <Reveal direction="down" delay={150}>
             <Link
               to="/about"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
             >
               Learn More
               <ArrowRight className="size-4" />
@@ -79,7 +79,7 @@ export function AboutSection() {
 export function StatsSection() {
   const { ref, shown } = useReveal({ once: true });
   return (
-    <div ref={ref} className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
+    <div ref={ref} className="mt-4 grid grid-cols-2 gap-3 sm:gap-3.5">
       {stats.map((s) => (
         <div
           key={s.label}
@@ -120,7 +120,7 @@ export function WhyChooseUs() {
           title="Why Choose DECAGON?"
           subtitle="A quality-first pharmaceutical philosophy applied across every category we serve."
         />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 md:mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {whyDecagon.map((item, i) => {
             const Icon = whyIcons[i % whyIcons.length]!;
             return (
@@ -163,7 +163,7 @@ export function CategorySection() {
           title="Our Pharmaceutical Products"
           subtitle="Explore the DECAGON product portfolio, organised across ten therapeutic categories."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-6 md:mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {categories.map((c, i) => (
             <Reveal key={c.slug} delay={(i % 5) * 50} direction={i % 2 === 0 ? "left" : "down"}>
               <Link
@@ -215,7 +215,7 @@ export function FeaturedProducts() {
         </div>
 
         <Reveal direction="left" delay={100}>
-          <div className="mt-8 -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pt-4 pb-6 sm:mx-0 sm:px-2">
+          <div className="mt-4 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pt-2 pb-4 sm:mx-0 sm:px-2">
             {featuredProducts.map((p) => (
               <div key={p.slug} className="w-[19rem] shrink-0 snap-start pt-1">
                 <ProductCard product={p} />
@@ -244,14 +244,14 @@ export function QualitySection() {
         className="absolute inset-0 size-full object-cover"
       />
       <div className="absolute inset-0 bg-hero-overlay" />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-10 lg:px-8">
         <SectionHeading
           invert
           eyebrow="Quality"
           title="Quality That Defines DECAGON"
           subtitle="Quality, consistency and reliability guide how our products are sourced, manufactured, checked and packaged — responsibly, batch after batch."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 md:mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {qualityPillars.map((p, i) => {
             const Icon = pillarIcons[i % pillarIcons.length]!;
             return (
@@ -277,7 +277,7 @@ export function QualitySection() {
 export function PortfolioVisualSection() {
   return (
     <section className="section-y bg-background">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <Reveal direction="left" className="relative order-2 lg:order-1">
           <img
             src={hero3}
@@ -303,7 +303,7 @@ export function PortfolioVisualSection() {
             title="Healthcare Solutions Across Multiple Therapeutic Categories"
             subtitle="Tablets, capsules, syrups, injections, gels, creams, shampoos, soaps and nutritional supplements — presented with clear composition details for healthcare professionals."
           />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {["Tablets & Capsules", "Syrups & Oral Solutions", "Injections", "Topical & Personal Care"].map(
               (t, i) => (
                 <Reveal key={t} delay={i * 70} direction={i % 2 === 0 ? "left" : "down"}>
@@ -341,7 +341,7 @@ export function TestimonialCarousel() {
           subtitle="Feedback and experiences shared by physicians, specialists and pharmacy partners across our network."
         />
 
-        <Reveal direction="left" className="mx-auto mt-12 max-w-4xl">
+        <Reveal direction="left" className="mx-auto mt-6 md:mt-8 max-w-4xl">
           {/* Main Featured Spotlight Review Card */}
           <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-card via-surface/90 to-primary/[0.04] p-8 shadow-lift transition-all duration-300 md:p-12">
             {/* Background Decorative Quote Emblem */}
@@ -414,7 +414,7 @@ export function TestimonialCarousel() {
           </div>
 
           {/* Quick Review Selectors Bar */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
             {testimonials.map((item, idx) => (
               <button
                 key={item.name}
@@ -452,10 +452,10 @@ export function TestimonialCarousel() {
 
 export function CTASection() {
   return (
-    <section className="overflow-hidden px-4 pb-8 sm:px-6 sm:pb-10 lg:px-8">
+    <section className="overflow-hidden px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
       <Reveal
         direction="down"
-        className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-gradient-brand px-6 py-7 shadow-lift sm:px-10 sm:py-8 lg:px-12"
+        className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-gradient-brand px-5 py-5 shadow-lift sm:px-8 sm:py-6 lg:px-10"
       >
         <div className="flex flex-col items-center justify-between gap-6 text-center lg:flex-row lg:text-left">
           <div className="min-w-0 max-w-2xl lg:max-w-3xl">

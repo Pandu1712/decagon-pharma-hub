@@ -45,7 +45,7 @@ function QualityPage() {
               title="Consistency, reliability and responsible practice"
               subtitle="Our quality philosophy runs through sourcing, production, in-process checks, documentation and packaging — so healthcare professionals can rely on what they prescribe and dispense."
             />
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
               {qualityPillars.map((p, i) => (
                 <Reveal key={p.title} delay={i * 70} direction={i % 2 === 0 ? "left" : "down"}>
                   <div className="card-lift h-full flex flex-col justify-between rounded-2xl border border-border bg-surface p-7 shadow-soft">

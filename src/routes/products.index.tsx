@@ -88,7 +88,7 @@ function ProductsPage() {
                 }}
                 placeholder="Search by product name, composition or category…"
                 aria-label="Search products"
-                className="w-full rounded-full border border-input bg-card py-4 pl-13 pr-12 text-sm shadow-soft outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring/25"
+                className="w-full rounded-full border border-input bg-card py-3 pl-13 pr-12 text-sm shadow-soft outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring/25"
               />
               {query ? (
                 <button
@@ -103,7 +103,7 @@ function ProductsPage() {
             </div>
 
             {/* Category filters */}
-            <div className="mt-8 flex flex-wrap justify-center gap-2">
+            <div className="mt-4 flex flex-wrap justify-center gap-2">
               <button
                 type="button"
                 onClick={() => setSearch({ ...(query ? { q: query } : {}) })}
@@ -137,7 +137,7 @@ function ProductsPage() {
                 </p>
               </div>
             ) : (
-              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filtered.slice(0, visible).map((p) => (
                   <ProductCard key={p.slug} product={p} />
                 ))}
@@ -145,18 +145,18 @@ function ProductsPage() {
             )}
 
             {visible < filtered.length ? (
-              <div className="mt-12 text-center">
+              <div className="mt-6 text-center">
                 <button
                   type="button"
                   onClick={() => setVisible((v) => v + PAGE_SIZE)}
-                  className="inline-flex rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+                  className="inline-flex rounded-full bg-gradient-brand px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
                 >
                   Load More Products
                 </button>
               </div>
             ) : null}
 
-            <div className="mt-16 rounded-2xl border border-border bg-surface p-6 text-sm text-muted-foreground shadow-soft">
+            <div className="mt-6 rounded-2xl border border-border bg-surface p-5 text-sm text-muted-foreground shadow-soft">
               Product names and compositions are shown exactly as supplied by DECAGON. This
               catalogue is intended as product information for healthcare professionals and does not
               constitute medical advice. For prescribing details, please{" "}

@@ -7,7 +7,7 @@ import { company } from "@/data/site";
 export function Footer() {
   return (
     <footer className="bg-brand-blue-deep text-primary-foreground">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 sm:py-10 lg:grid-cols-4 lg:px-8">
         <div>
           <div className="inline-block rounded-xl bg-white p-2.5 shadow-sm">
             <BrandLogo />
@@ -74,7 +74,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-primary-foreground/60 sm:flex-row sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-3 sm:py-4 text-xs text-primary-foreground/60 sm:flex-row sm:px-6 lg:px-8">
           <p>© 2026 DECAGON. All Rights Reserved.</p>
           <div className="flex gap-6">
             <Link to="/privacy" className="hover:text-brand-teal">Privacy Policy</Link>
