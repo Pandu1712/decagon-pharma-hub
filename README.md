@@ -1352,23 +1352,13 @@ Keep contact information, product information, testimonials, hero slides and com
 
 Use the supplied DECAGON logo and product reference images as the primary visual/content reference.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/1aa81667-997a-4b98-bb28-08dbba2885fd).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+To run this project locally, you need Node.js and npm:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+git clone https://github.com/Pandu1712/decagon-pharma-hub.git
+cd decagon-pharma-hub
+npm install
 npm run dev
 ```

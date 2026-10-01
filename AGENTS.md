@@ -1,10 +1,11 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# DECAGON Pharma Hub Guidelines
+
+## Repository Overview
+- **Project**: DECAGON Pharma Hub web application
+- **Stack**: React 19, TanStack Start & Router, Vite, Tailwind CSS v4
+
+## Development Guidelines
+- Maintain a clean commit history on `main`.
+- Ensure all pages and product data render accurately.
+- Keep the production bundle verified (`npm run build`).
+
