@@ -34,7 +34,6 @@ function AboutPage() {
       <Navbar />
       <main>
         <PageHeader
-          eyebrow="About Us"
           title="About DECAGON"
           subtitle="Believed Quality — a philosophy built around trust, consistency and reliable healthcare."
           crumbs={[{ label: "About Us" }]}
