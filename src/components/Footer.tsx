@@ -100,7 +100,7 @@ export function Footer() {
               Product Categories
             </h3>
             <ul className="mt-5 space-y-2.5 text-sm">
-              {categories.slice(0, 8).map((c) => (
+              {categories.slice(0, 5).map((c) => (
                 <li key={c.slug}>
                   <Link
                     to="/products"
