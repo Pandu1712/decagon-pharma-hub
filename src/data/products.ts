@@ -20,19 +20,20 @@ export type Category = {
   name: string;
   short: string;
   accent: "blue" | "purple" | "teal" | "amber" | "orange";
+  image?: string;
 };
 
 export const categories: Category[] = [
-  { slug: "diabetic-care", name: "Diabetic Care", short: "Anti-diabetic combinations", accent: "blue" },
-  { slug: "pain-orthopedic-care", name: "Pain & Orthopedic Care", short: "Analgesic & musculoskeletal range", accent: "purple" },
-  { slug: "gastro-care", name: "Gastro Care", short: "Acid control & gastro solutions", accent: "orange" },
-  { slug: "vitamins-supplements", name: "Vitamins & Supplements", short: "Nutrition & wellness support", accent: "teal" },
-  { slug: "neurological-care", name: "Neurological Care", short: "Neuropathic care range", accent: "purple" },
-  { slug: "cardiovascular-care", name: "Cardiovascular Care", short: "Antihypertensive range", accent: "blue" },
-  { slug: "anti-infective", name: "Anti-Infective", short: "Antibacterial solutions", accent: "teal" },
-  { slug: "dermatology", name: "Dermatology", short: "Skin & scalp care", accent: "amber" },
-  { slug: "womens-health", name: "Women's Health", short: "Care for women", accent: "purple" },
-  { slug: "general-healthcare", name: "General Healthcare", short: "Everyday healthcare needs", accent: "orange" },
+  { slug: "diabetic-care", name: "Diabetic Care", short: "Anti-diabetic combinations", accent: "blue", image: "/categories/diabetic-care.jpg" },
+  { slug: "pain-orthopedic-care", name: "Pain & Orthopedic Care", short: "Analgesic & musculoskeletal range", accent: "purple", image: "/categories/pain-orthopedic-care.jpg" },
+  { slug: "gastro-care", name: "Gastro Care", short: "Acid control & gastro solutions", accent: "orange", image: "/categories/gastro-care.jpg" },
+  { slug: "vitamins-supplements", name: "Vitamins & Supplements", short: "Nutrition & wellness support", accent: "teal", image: "/categories/vitamins-supplements.jpg" },
+  { slug: "neurological-care", name: "Neurological Care", short: "Neuropathic care range", accent: "purple", image: "/categories/neurological-care.jpg" },
+  { slug: "cardiovascular-care", name: "Cardiovascular Care", short: "Antihypertensive range", accent: "blue", image: "/categories/cardiovascular-care.jpg" },
+  { slug: "anti-infective", name: "Anti-Infective", short: "Antibacterial solutions", accent: "teal", image: "/categories/anti-infective.jpg" },
+  { slug: "dermatology", name: "Dermatology", short: "Skin & scalp care", accent: "amber", image: "/categories/dermatology.jpg" },
+  { slug: "womens-health", name: "Women's Health", short: "Care for women", accent: "purple", image: "/categories/womens-health.jpg" },
+  { slug: "general-healthcare", name: "General Healthcare", short: "Everyday healthcare needs", accent: "orange", image: "/categories/general-healthcare.jpg" },
 ];
 
 export type ProductDetailInfo = {

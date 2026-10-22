@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -155,34 +155,120 @@ export function WhyChooseUs() {
 /* ---------------- Categories ---------------- */
 
 export function CategorySection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: 340, behavior: "smooth" });
+      }
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const scroll = (dir: "left" | "right") => {
+    scrollRef.current?.scrollBy({
+      left: dir === "left" ? -340 : 340,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <section className="section-y bg-background">
+    <section className="section-y bg-background overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Therapeutic Categories"
-          title="Our Pharmaceutical Products"
-          subtitle="Explore the DECAGON product portfolio, organised across ten therapeutic categories."
-        />
-        <div className="mt-6 md:mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {categories.map((c, i) => (
-            <Reveal key={c.slug} delay={(i % 5) * 50} direction={i % 2 === 0 ? "left" : "down"}>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading
+            align="left"
+            eyebrow="Therapeutic Categories"
+            title="Our Pharmaceutical Products"
+            subtitle="Explore the DECAGON product portfolio, organised across ten therapeutic categories."
+          />
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              aria-label="Previous categories"
+              className="inline-flex size-10 items-center justify-center rounded-full border border-border/80 bg-card text-foreground shadow-xs transition-colors hover:border-primary/40 hover:bg-secondary hover:text-primary cursor-pointer"
+            >
+              <ChevronLeft className="size-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              aria-label="Next categories"
+              className="inline-flex size-10 items-center justify-center rounded-full border border-border/80 bg-card text-foreground shadow-xs transition-colors hover:border-primary/40 hover:bg-secondary hover:text-primary cursor-pointer"
+            >
+              <ChevronRight className="size-5" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={scrollRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          className="mt-6 md:mt-8 -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 pt-1 no-scrollbar scroll-smooth sm:mx-0 sm:px-1"
+        >
+          {categories.map((c) => (
+            <div key={c.slug} className="w-[280px] sm:w-[320px] shrink-0 snap-start">
               <Link
                 to="/products"
                 search={{ category: c.slug }}
-                className="card-lift group flex h-full flex-col justify-between rounded-2xl border border-border/60 bg-gradient-to-br from-card via-surface/60 to-primary/[0.03] p-6 shadow-soft transition-all hover:border-primary/30 hover:shadow-lift"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lift"
               >
-                <div>
-                  <span className={cn("block size-2.5 rounded-full shadow-xs", accentDot(c.accent))} />
-                  <h3 className="mt-4 text-base font-bold leading-snug text-foreground group-hover:text-primary">
-                    {c.name}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground text-justify">{c.short}</p>
+                <div className="relative h-44 w-full overflow-hidden bg-surface">
+                  {c.image ? (
+                    <img
+                      src={c.image}
+                      alt={c.name}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-108"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-surface">
+                      <span className={cn("size-6 rounded-full", accentDot(c.accent))} />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute top-3 left-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 dark:bg-black/70 backdrop-blur-md px-2.5 py-1 text-[11px] font-bold text-foreground shadow-xs">
+                      <span className={cn("size-2 rounded-full", accentDot(c.accent))} />
+                      <span>{c.name}</span>
+                    </span>
+                  </div>
+                  <div className="absolute bottom-2.5 right-3">
+                    <span className="rounded-full bg-primary px-2.5 py-0.5 text-[11px] font-bold text-white shadow-xs">
+                      {countByCategory(c.slug)} Products
+                    </span>
+                  </div>
                 </div>
-                <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-                  {countByCategory(c.slug)} Products
-                </p>
+
+                <div className="flex flex-1 flex-col justify-between p-5">
+                  <div>
+                    <h3 className="text-base font-bold text-foreground transition-colors group-hover:text-primary">
+                      {c.name}
+                    </h3>
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                      {c.short}
+                    </p>
+                  </div>
+                  <div className="mt-4 flex items-center justify-between border-t border-border/50 pt-3">
+                    <span className="text-xs font-semibold text-primary group-hover:underline">
+                      Explore Formulations
+                    </span>
+                    <ArrowRight className="size-4 text-primary transition-transform duration-300 group-hover:translate-x-1" />
+                  </div>
+                </div>
               </Link>
-            </Reveal>
+            </div>
           ))}
         </div>
       </div>
