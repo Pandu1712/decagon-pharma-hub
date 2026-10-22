@@ -130,79 +130,37 @@ export function Footer() {
               <span className="h-3 w-1 rounded-full bg-brand-amber" />
               Contact Details
             </h3>
-            <div className="mt-5 space-y-2.5 text-sm">
-              {company.address && !company.address.startsWith("[") ? (
-                <div className="flex items-start gap-3 rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 backdrop-blur-sm transition-colors hover:border-white/20">
-                  <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-teal/20 text-brand-teal">
-                    <MapPin className="size-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                      Office Location
-                    </span>
-                    <span className="mt-0.5 block text-xs text-slate-200 break-words">
-                      {company.address}
-                    </span>
-                  </div>
-                </div>
-              ) : null}
+            <ul className="mt-5 space-y-3.5 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-teal/20 text-brand-teal ring-1 ring-white/10">
+                  <MapPin className="size-4" />
+                </span>
+                <span className="mt-1 leading-snug text-slate-200">{company.address}</span>
+              </li>
 
-              {company.phone && !company.phone.startsWith("[") ? (
-                <div className="flex items-start gap-3 rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 backdrop-blur-sm transition-colors hover:border-white/20">
-                  <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-purple/20 text-brand-purple">
-                    <Phone className="size-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                      Phone Inquiry
-                    </span>
-                    <span className="mt-0.5 block text-xs text-slate-200 break-words">
-                      {company.phone}
-                    </span>
-                  </div>
-                </div>
-              ) : null}
+              <li className="flex items-center gap-3">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-purple/20 text-brand-purple ring-1 ring-white/10">
+                  <Phone className="size-4" />
+                </span>
+                <span className="text-slate-200">{company.phone}</span>
+              </li>
 
-              {company.email && !company.email.startsWith("[") ? (
-                <div className="flex items-start gap-3 rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 backdrop-blur-sm transition-colors hover:border-white/20">
-                  <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-blue/30 text-brand-teal">
-                    <Mail className="size-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                      Email Support
-                    </span>
-                    <span className="mt-0.5 block text-xs text-slate-200 break-words">
-                      {company.email}
-                    </span>
-                  </div>
-                </div>
-              ) : null}
+              <li className="flex items-center gap-3">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-blue/30 text-brand-teal ring-1 ring-white/10">
+                  <Mail className="size-4" />
+                </span>
+                <span className="text-slate-200">{company.email}</span>
+              </li>
 
               {company.hours ? (
-                <div className="flex items-start gap-3 rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 backdrop-blur-sm transition-colors hover:border-white/20">
-                  <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-amber/20 text-brand-amber">
+                <li className="flex items-start gap-3">
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-amber/20 text-brand-amber ring-1 ring-white/10">
                     <Clock className="size-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                      Working Hours
-                    </span>
-                    <span className="mt-0.5 block text-xs text-slate-200">
-                      {company.hours}
-                    </span>
-                  </div>
-                </div>
+                  </span>
+                  <span className="mt-1 leading-snug text-slate-200">{company.hours}</span>
+                </li>
               ) : null}
-
-              <p className="pt-2 text-xs text-slate-400 leading-relaxed">
-                For distributor partnerships, trade enquiries, and clinical questions, connect with our{" "}
-                <Link to="/contact" className="font-semibold text-brand-teal hover:underline">
-                  support team
-                </Link>
-                .
-              </p>
-            </div>
+            </ul>
           </div>
         </div>
       </div>
