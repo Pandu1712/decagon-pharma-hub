@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Search, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
@@ -40,7 +39,7 @@ export const Route = createFileRoute("/products/")({
 function ProductsPage() {
   const search = Route.useSearch();
   const navigate = Route.useNavigate();
-  const [query, setQuery] = useState(search.q ?? "");
+  const query = search.q ?? "";
   const [visible, setVisible] = useState(PAGE_SIZE);
 
   const activeCategory = search.category as CategorySlug | undefined;
@@ -77,36 +76,11 @@ function ProductsPage() {
 
         <section className="section-y bg-background">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            {/* Search */}
-            <div className="relative mx-auto max-w-2xl">
-              <Search className="pointer-events-none absolute left-5 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
-              <input
-                value={query}
-                onChange={(e) => {
-                  setQuery(e.target.value);
-                  setVisible(PAGE_SIZE);
-                }}
-                placeholder="Search by product name, composition or category…"
-                aria-label="Search products"
-                className="w-full rounded-full border border-input bg-card py-3 pl-13 pr-12 text-sm shadow-soft outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring/25"
-              />
-              {query ? (
-                <button
-                  type="button"
-                  aria-label="Clear search"
-                  onClick={() => setQuery("")}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                >
-                  <X className="size-5" />
-                </button>
-              ) : null}
-            </div>
-
             {/* Category filters */}
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               <button
                 type="button"
-                onClick={() => setSearch({ ...(query ? { q: query } : {}) })}
+                onClick={() => setSearch({})}
                 className={cn(chip, !activeCategory && chipActive)}
               >
                 All Products ({products.length})
