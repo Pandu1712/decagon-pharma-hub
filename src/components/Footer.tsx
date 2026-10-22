@@ -1,15 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import {
   ArrowUpRight,
-  Award,
   CheckCircle2,
   ChevronRight,
   Clock,
-  HeartHandshake,
   Mail,
   MapPin,
   Phone,
-  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
@@ -17,24 +14,6 @@ import { categories } from "@/data/products";
 import { company } from "@/data/site";
 
 export function Footer() {
-  const trustHighlights = [
-    {
-      icon: ShieldCheck,
-      title: "WHO-GMP Standards",
-      desc: "Certified formulation & production practices",
-    },
-    {
-      icon: Award,
-      title: "Believed Quality",
-      desc: "Rigorous quality control & verified safety",
-    },
-    {
-      icon: HeartHandshake,
-      title: "Trusted Healthcare Partner",
-      desc: "Supporting doctors, clinics & pharmacies",
-    },
-  ];
-
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-[#0F172A] via-[#0B1226] to-[#070B18] text-white">
       {/* Top radiant multi-color accent line */}
@@ -49,32 +28,6 @@ export function Footer() {
         className="pointer-events-none absolute bottom-0 right-10 h-80 w-80 rounded-full bg-brand-purple/10 blur-3xl"
         aria-hidden="true"
       />
-
-      {/* Pre-footer Trust Highlights */}
-      <div className="relative border-b border-white/10 bg-white/[0.02]">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-9 lg:px-8">
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {trustHighlights.map((item, idx) => (
-              <div
-                key={idx}
-                className="group flex items-start gap-3.5 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 backdrop-blur-sm transition-all duration-300 hover:border-brand-teal/40 hover:bg-white/[0.06] hover:shadow-lg"
-              >
-                <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-teal/20 to-brand-blue/30 text-brand-teal ring-1 ring-white/15 transition-transform duration-300 group-hover:scale-105">
-                  <item.icon className="size-5" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white transition-colors group-hover:text-brand-teal">
-                    {item.title}
-                  </h4>
-                  <p className="mt-1 text-xs leading-relaxed text-slate-300/80">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Main Footer Content */}
       <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
