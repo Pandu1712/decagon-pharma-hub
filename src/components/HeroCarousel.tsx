@@ -129,7 +129,7 @@ export function HeroCarousel() {
 
   return (
     <section
-      className="relative min-h-[440px] lg:min-h-[480px] xl:min-h-[520px] w-full overflow-hidden bg-white"
+      className="relative min-h-[520px] sm:min-h-[560px] lg:min-h-[600px] xl:min-h-[640px] w-full overflow-hidden bg-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-label="DECAGON pharmaceutical highlights"
@@ -171,7 +171,7 @@ export function HeroCarousel() {
       <div className="pointer-events-none absolute top-1/4 left-1/3 size-72 rounded-full bg-teal-50/40 blur-3xl" />
 
       {/* Top Right Tagline: "Science for a Better Life" */}
-      <div className="hidden lg:flex flex-col items-start absolute top-20 right-12 xl:right-16 z-20 pointer-events-none">
+      <div className="hidden lg:flex flex-col items-start absolute top-24 lg:top-26 xl:top-28 right-12 xl:right-16 z-20 pointer-events-none">
         <span className="text-xs font-medium tracking-wide text-slate-500">
           Science for a
         </span>
@@ -182,7 +182,7 @@ export function HeroCarousel() {
       </div>
 
       {/* Floating Glassmorphism Molecular Structure Card (Center-Right) */}
-      <div className="hidden md:flex absolute right-[26%] lg:right-[30%] xl:right-[33%] top-[42%] -translate-y-1/2 z-20 items-center gap-4 rounded-xl border border-white/90 bg-white/75 px-4 py-3 shadow-[0_16px_35px_rgba(10,37,64,0.08)] backdrop-blur-md transition-transform duration-500 hover:scale-105">
+      <div className="hidden md:flex absolute right-[26%] lg:right-[30%] xl:right-[33%] top-[48%] lg:top-[50%] -translate-y-1/2 z-20 items-center gap-4 rounded-xl border border-white/90 bg-white/75 px-4 py-3 shadow-[0_16px_35px_rgba(10,37,64,0.08)] backdrop-blur-md transition-transform duration-500 hover:scale-105">
         {/* Molecular / Chemical Bond SVG graphic */}
         <svg
           className="w-14 h-16 text-sky-500/80 stroke-current shrink-0"
@@ -215,7 +215,7 @@ export function HeroCarousel() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 mx-auto flex min-h-[440px] lg:min-h-[480px] xl:min-h-[520px] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8 pt-10 lg:pt-12 pb-10 lg:pb-12">
+      <div className="relative z-10 mx-auto flex min-h-[520px] sm:min-h-[560px] lg:min-h-[600px] xl:min-h-[640px] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-20 sm:pb-24 lg:pb-28">
         <div className="max-w-2xl xl:max-w-3xl">
           {heroSlides.map((slide, i) => (
             <div
