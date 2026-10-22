@@ -31,7 +31,6 @@ function QualityPage() {
       <Navbar />
       <main>
         <PageHeader
-          eyebrow="Quality"
           title="Quality That Defines DECAGON"
           subtitle="A quality-focused approach applied consistently across our portfolio."
           crumbs={[{ label: "Quality" }]}
