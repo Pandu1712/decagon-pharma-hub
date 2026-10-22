@@ -38,7 +38,7 @@ function AboutPage() {
           subtitle="Believed Quality — a philosophy built around trust, consistency and reliable healthcare."
           crumbs={[{ label: "About Us" }]}
         />
-        <AboutSection />
+        <AboutSection showButton={false} />
         <WhyChooseUs />
         <PortfolioVisualSection />
         <CTASection />

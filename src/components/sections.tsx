@@ -29,7 +29,7 @@ import { cn } from "@/lib/utils";
 
 /* ---------------- About + Stats ---------------- */
 
-export function AboutSection() {
+export function AboutSection({ showButton = true }: { showButton?: boolean } = {}) {
   return (
     <section id="about" className="py-6 sm:py-8 bg-background">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
@@ -61,15 +61,17 @@ export function AboutSection() {
             subtitle="DECAGON is committed to delivering quality-focused pharmaceutical and healthcare solutions across a diverse range of therapeutic categories. Our growing product portfolio reflects our focus on reliability, consistency and better healthcare outcomes."
           />
           <StatsSection />
-          <Reveal direction="down" delay={150}>
-            <Link
-              to="/about"
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
-            >
-              Learn More
-              <ArrowRight className="size-4" />
-            </Link>
-          </Reveal>
+          {showButton ? (
+            <Reveal direction="down" delay={150}>
+              <Link
+                to="/about"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+              >
+                Learn More
+                <ArrowRight className="size-4" />
+              </Link>
+            </Reveal>
+          ) : null}
         </div>
       </div>
     </section>
