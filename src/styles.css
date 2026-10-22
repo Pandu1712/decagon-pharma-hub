@@ -125,8 +125,6 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
-    overflow-x: hidden;
-    overflow-y: scroll;
     scrollbar-gutter: stable;
     width: 100%;
     max-width: 100vw;
@@ -139,7 +137,7 @@
     -webkit-font-smoothing: antialiased;
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
   }
 
@@ -147,7 +145,6 @@
   main {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
   }
 
   h1,

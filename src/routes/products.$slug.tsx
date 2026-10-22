@@ -181,7 +181,7 @@ function ProductDetail() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-start gap-6 lg:grid-cols-[0.85fr_1.15fr] xl:gap-8">
               {/* Left Column: Visual Presentation Card & Quick Info (Sticky on desktop) */}
-              <div className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+              <div className="space-y-4 lg:sticky lg:top-24 lg:self-start lg:z-10">
                 <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-card via-surface/60 to-primary/[0.04] p-5 sm:p-6 shadow-soft">
                     {/* Background subtle radial glow */}
                     <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full bg-primary/10 blur-3xl" />
