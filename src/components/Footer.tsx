@@ -206,14 +206,9 @@ export function Footer() {
       {/* Bottom Bar: Copyright, Legal & Regulatory Note */}
       <div className="relative border-t border-white/10 bg-black/40">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-5 sm:flex-row sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
-            <p className="text-xs font-medium text-slate-300">
-              © {new Date().getFullYear()} {company.name} Pharma Hub. All Rights Reserved.
-            </p>
-            <p className="text-[11px] text-slate-400">
-              {company.tagline} • Quality-driven healthcare formulations.
-            </p>
-          </div>
+          <p className="text-xs font-medium text-slate-300">
+            © {new Date().getFullYear()} {company.name} Pharma Hub. All Rights Reserved.
+          </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-300">
             <Link
