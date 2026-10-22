@@ -68,9 +68,9 @@ function ProductsPage() {
       <Navbar />
       <main>
         <PageHeader
-          eyebrow="Products"
           title="Our Pharmaceutical Products"
           subtitle="Explore the DECAGON Product Portfolio — organised by therapeutic category, with exact product names and compositions."
+          subtitleClassName="lg:whitespace-nowrap"
           crumbs={[{ label: "Products" }]}
         />
 

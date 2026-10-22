@@ -1,17 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
 import { MedicineFormVisual3D } from "@/components/MedicineFormVisual3D";
+import { cn } from "@/lib/utils";
 
 export function PageHeader({
   eyebrow,
   title,
   subtitle,
+  subtitleClassName,
   crumbs = [],
   medicineForm,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  subtitleClassName?: string;
   crumbs?: { label: string; to?: string; search?: Record<string, string> }[];
   medicineForm?: string;
 }) {
@@ -20,7 +23,7 @@ export function PageHeader({
       <div className="absolute -right-24 -top-24 size-96 rounded-full bg-brand-purple/40 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 left-1/3 size-80 rounded-full bg-brand-teal/25 blur-3xl pointer-events-none" />
       <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 sm:px-6 md:flex-row lg:px-8">
-        <div className={medicineForm ? "max-w-2xl flex-1" : "max-w-3xl flex-1"}>
+        <div className={medicineForm ? "max-w-2xl flex-1" : "max-w-5xl flex-1"}>
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs text-primary-foreground/65">
             <Link to="/" className="hover:text-brand-teal">Home</Link>
             {crumbs.map((c) => (
@@ -50,7 +53,13 @@ export function PageHeader({
             {title}
           </h1>
           {subtitle ? (
-            <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-primary-foreground/80 md:text-base">
+            <p
+              className={cn(
+                "mt-1.5 text-sm leading-relaxed text-primary-foreground/80 md:text-base",
+                medicineForm ? "max-w-2xl" : "max-w-5xl",
+                subtitleClassName,
+              )}
+            >
               {subtitle}
             </p>
           ) : null}
