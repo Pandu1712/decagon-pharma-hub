@@ -47,7 +47,7 @@ export function SectionHeading({
   eyebrow,
   title,
   subtitle,
-  align = "center",
+  align = "left",
   invert = false,
   direction = "down",
 }: {
@@ -89,7 +89,8 @@ export function SectionHeading({
       {subtitle ? (
         <p
           className={cn(
-            "mt-2 text-sm leading-relaxed md:text-base text-justify",
+            "mt-2 text-sm leading-relaxed md:text-base",
+            align === "center" ? "text-center" : "text-left",
             invert ? "text-primary-foreground/80" : "text-muted-foreground",
           )}
         >
