@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
@@ -31,7 +31,6 @@ function ContactPage() {
     { icon: MapPin, label: "Office Address", value: company.address },
     { icon: Phone, label: "Phone", value: company.phone },
     { icon: Mail, label: "Email", value: company.email },
-    { icon: Globe, label: "Website", value: company.website },
     { icon: Clock, label: "Business Hours", value: company.hours },
   ];
 
