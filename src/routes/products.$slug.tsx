@@ -158,7 +158,7 @@ function ProductDetail() {
     ...(details.pregnancyLactation
       ? [{ id: "pregnancy" as TopicId, label: "Pregnancy & Lactation", icon: Baby }]
       : []),
-    { id: "usage", label: "Recommended Usage", icon: Clock },
+    { id: "usage", label: "Recommended", icon: Clock },
   ];
 
   return (
@@ -289,33 +289,31 @@ function ProductDetail() {
 
               {/* Right Column: Interactive Topics (Overview, Key Features, Composition, Benefits, Usage) */}
               <div className="space-y-4">
-                {/* Topic Navigation Tabs */}
-                <Reveal>
-                  <div className="flex items-center gap-1.5 overflow-x-auto rounded-2xl border border-border/80 bg-surface/80 p-1.5 shadow-xs">
-                    {topics.map((t) => {
-                      const Icon = t.icon;
-                      const isActive = activeTopic === t.id;
-                      return (
-                        <button
-                          key={t.id}
-                          type="button"
-                          onClick={() => setActiveTopic(t.id)}
-                          className={cn(
-                            "flex shrink-0 items-center gap-2 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-bold transition-all",
-                            isActive
-                              ? "bg-card text-primary shadow-soft border border-border/60"
-                              : "text-muted-foreground hover:bg-card/50 hover:text-foreground",
-                          )}
-                          aria-selected={isActive}
-                          role="tab"
-                        >
-                          <Icon className={cn("size-4", isActive ? "text-primary" : "text-muted-foreground")} />
-                          <span>{t.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </Reveal>
+                {/* Topic Navigation Tabs (Sticky below navbar) */}
+                <div className="sticky top-20 sm:top-24 z-30 flex items-center gap-1 xl:gap-1.5 rounded-2xl border border-border/80 bg-surface/95 p-1.5 shadow-soft backdrop-blur-md overflow-x-auto no-scrollbar lg:overflow-visible">
+                  {topics.map((t) => {
+                    const Icon = t.icon;
+                    const isActive = activeTopic === t.id;
+                    return (
+                      <button
+                        key={t.id}
+                        type="button"
+                        onClick={() => setActiveTopic(t.id)}
+                        className={cn(
+                          "flex flex-1 min-w-0 items-center justify-center gap-1.5 rounded-xl px-2 xl:px-3 py-2 text-xs xl:text-sm font-bold transition-all shrink-0 sm:shrink lg:shrink",
+                          isActive
+                            ? "bg-card text-primary shadow-soft border border-border/60"
+                            : "text-muted-foreground hover:bg-card/50 hover:text-foreground",
+                        )}
+                        aria-selected={isActive}
+                        role="tab"
+                      >
+                        <Icon className={cn("size-3.5 xl:size-4 shrink-0", isActive ? "text-primary" : "text-muted-foreground")} />
+                        <span className="truncate">{t.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
 
                 {/* Active Topic Content Panel */}
                 <div className="rounded-3xl border border-border/80 bg-card p-5 sm:p-6 shadow-soft">

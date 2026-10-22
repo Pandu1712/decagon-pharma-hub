@@ -195,6 +195,14 @@
   border: 1px solid oklch(1 0 0 / 0.18);
 }
 
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @utility section-y {
   padding-block: 1.25rem;
   @media (min-width: 768px) {
