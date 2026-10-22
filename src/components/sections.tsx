@@ -237,15 +237,9 @@ export function CategorySection() {
                       <span className={cn("size-6 rounded-full", accentDot(c.accent))} />
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute top-3 left-3">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 dark:bg-black/70 backdrop-blur-md px-2.5 py-1 text-[11px] font-bold text-foreground shadow-xs">
-                      <span className={cn("size-2 rounded-full", accentDot(c.accent))} />
-                      <span>{c.name}</span>
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-2.5 right-3">
-                    <span className="rounded-full bg-primary px-2.5 py-0.5 text-[11px] font-bold text-white shadow-xs">
+                    <span className="rounded-full bg-primary/90 backdrop-blur-md px-2.5 py-0.5 text-[11px] font-bold text-white shadow-xs">
                       {countByCategory(c.slug)} Products
                     </span>
                   </div>
