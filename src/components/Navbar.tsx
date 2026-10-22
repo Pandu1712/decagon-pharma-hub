@@ -70,106 +70,47 @@ export function Navbar({ transparent = false }: { transparent?: boolean }) {
             </Link>
             <div
               className={cn(
-                "absolute left-1/2 top-full w-[860px] max-w-[calc(100vw-2rem)] -translate-x-1/2 pt-3 transition-all duration-200",
+                "absolute left-0 top-full w-72 pt-2 transition-all duration-200",
                 megaOpen
                   ? "visible opacity-100 translate-y-0"
-                  : "invisible -translate-y-2 opacity-0",
+                  : "invisible -translate-y-2 opacity-0 pointer-events-none",
               )}
             >
-              <div className="rounded-2xl border border-border bg-popover p-4 shadow-lift">
-                <div className="grid gap-5 lg:grid-cols-[1.1fr_1fr]">
-                  {/* Left Row/Column: Categories List (2 Columns) */}
-                  <div>
-                    <div className="mb-2.5 flex items-center justify-between border-b border-border/60 pb-2 px-1">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-                        Therapeutic Categories ({categories.length})
-                      </span>
-                      <Link
-                        to="/products"
-                        className="text-xs font-semibold text-primary hover:underline"
-                        onClick={() => setMegaOpen(false)}
-                      >
-                        All Categories →
-                      </Link>
-                    </div>
-                    <div className="grid grid-cols-2 gap-1">
-                      {categories.map((c) => (
-                        <Link
-                          key={c.slug}
-                          to="/products"
-                          search={{ category: c.slug }}
-                          activeProps={{
-                            className: "bg-primary/10 text-primary font-bold",
-                          }}
-                          className="group flex items-start gap-2.5 rounded-xl px-2.5 py-2 transition-colors hover:bg-secondary"
-                          onClick={() => setMegaOpen(false)}
-                        >
-                          <span className={cn("mt-1.5 size-2 shrink-0 rounded-full", accentDot(c.accent))} />
-                          <span className="min-w-0">
-                            <span className="block truncate text-xs font-semibold text-foreground group-hover:text-primary">
-                              {c.name}
-                            </span>
-                            <span className="block text-[10px] text-muted-foreground">
-                              {countByCategory(c.slug)} products
-                            </span>
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Right Row/Column: Products List (2 Columns Grid Model) */}
-                  <div className="border-t border-border/60 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
-                    <div className="mb-2.5 flex items-center justify-between border-b border-border/60 pb-2 px-1">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-                        Featured Products List
-                      </span>
-                      <Link
-                        to="/products"
-                        className="text-xs font-semibold text-primary hover:underline"
-                        onClick={() => setMegaOpen(false)}
-                      >
-                        Browse All ({products.length}) →
-                      </Link>
-                    </div>
-                    <div className="grid grid-cols-2 gap-1.5 max-h-[310px] overflow-y-auto pr-1">
-                      {products.slice(0, 14).map((p) => (
-                        <Link
-                          key={p.slug}
-                          to="/products/$slug"
-                          params={{ slug: p.slug }}
-                          className="group flex flex-col rounded-xl border border-border/50 bg-card p-2 transition-colors hover:border-primary/40 hover:bg-secondary/60"
-                          onClick={() => setMegaOpen(false)}
-                        >
-                          <div className="flex items-center justify-between gap-1">
-                            <span className="truncate text-xs font-bold text-foreground group-hover:text-primary">
-                              {p.name}
-                            </span>
-                            <span className="shrink-0 rounded bg-primary/10 px-1 py-0.5 text-[9px] font-semibold text-primary">
-                              {p.form}
-                            </span>
-                          </div>
-                          <span className="mt-0.5 line-clamp-1 text-[10px] text-muted-foreground">
-                            {p.composition}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Footer Banner Bar */}
-                <div className="mt-3 flex items-center justify-between rounded-xl bg-surface px-4 py-2 border border-border/60">
-                  <span className="text-xs text-muted-foreground">
-                    Looking for a specific pharmaceutical formulation?
+              <div className="rounded-2xl border border-border bg-popover/98 p-2 shadow-lift backdrop-blur-md">
+                <Link
+                  to="/products"
+                  className="flex items-center justify-between rounded-xl px-3 py-2 text-xs sm:text-sm font-bold text-primary transition-colors hover:bg-primary/10"
+                  onClick={() => setMegaOpen(false)}
+                >
+                  <span>All Products</span>
+                  <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-bold text-primary">
+                    {products.length}
                   </span>
-                  <Link
-                    to="/products"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
-                    onClick={() => setMegaOpen(false)}
-                  >
-                    View All {products.length} Products →
-                  </Link>
+                </Link>
+
+                <div className="my-1.5 h-px bg-border/60" />
+
+                <div className="space-y-0.5">
+                  {categories.map((c) => (
+                    <Link
+                      key={c.slug}
+                      to="/products"
+                      search={{ category: c.slug }}
+                      activeProps={{
+                        className: "bg-primary/10 text-primary font-bold",
+                      }}
+                      className="group flex items-center justify-between rounded-xl px-3 py-2 text-xs sm:text-sm font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary"
+                      onClick={() => setMegaOpen(false)}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className={cn("size-2 shrink-0 rounded-full", accentDot(c.accent))} />
+                        <span className="truncate">{c.name}</span>
+                      </div>
+                      <span className="text-[11px] font-semibold text-muted-foreground group-hover:text-primary/70">
+                        {countByCategory(c.slug)}
+                      </span>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
