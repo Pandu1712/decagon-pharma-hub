@@ -275,15 +275,20 @@
 @utility text-justify {
   text-align: justify;
   text-justify: inter-word;
+  text-align-last: left;
 }
 
-/* Card and Section Content Justification */
+/* Universal Content and Text Justification */
+p:not(.sr-only),
+article p,
+section p,
+main p,
 .card-lift p,
 .glass-panel p,
-main section p:not(.text-center):not(.text-left):not(.sr-only),
-article p {
+.prose p {
   text-align: justify;
   text-justify: inter-word;
+  text-align-last: left;
 }
 
 @utility card-lift {

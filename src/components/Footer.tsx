@@ -45,7 +45,7 @@ export function Footer() {
               </span>
             </div>
 
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300 text-justify">
               {company.description}
             </p>
 

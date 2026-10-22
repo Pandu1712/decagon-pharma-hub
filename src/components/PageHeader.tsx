@@ -55,7 +55,7 @@ export function PageHeader({
           {subtitle ? (
             <p
               className={cn(
-                "mt-1.5 text-sm leading-relaxed text-primary-foreground/80 md:text-base",
+                "mt-1.5 text-sm leading-relaxed text-primary-foreground/80 md:text-base text-justify",
                 medicineForm ? "max-w-2xl" : "max-w-5xl",
                 subtitleClassName,
               )}

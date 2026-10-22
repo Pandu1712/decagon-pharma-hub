@@ -246,7 +246,7 @@ export function HeroCarousel() {
               </h1>
 
               {/* Subtext */}
-              <p className="mt-3.5 max-w-xl text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="mt-3.5 max-w-xl text-sm sm:text-base text-slate-600 leading-relaxed font-normal text-justify">
                 {slide.subtext}
               </p>
             </div>

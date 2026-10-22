@@ -89,8 +89,7 @@ export function SectionHeading({
       {subtitle ? (
         <p
           className={cn(
-            "mt-2 text-sm leading-relaxed md:text-base",
-            align === "center" ? "text-center" : "text-left",
+            "mt-2 text-sm leading-relaxed md:text-base text-justify",
             invert ? "text-primary-foreground/80" : "text-muted-foreground",
           )}
         >

@@ -252,7 +252,7 @@ export function CategorySection() {
                     <h3 className="text-base font-bold text-foreground transition-colors group-hover:text-primary">
                       {c.name}
                     </h3>
-                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed line-clamp-2 text-justify">
                       {c.short}
                     </p>
                   </div>
@@ -544,7 +544,7 @@ export function CTASection() {
             <h2 className="text-xl font-bold tracking-tight text-primary-foreground sm:text-2xl lg:text-3xl lg:whitespace-nowrap">
               Looking for Reliable Pharmaceutical Solutions?
             </h2>
-            <p className="mt-2 text-sm text-primary-foreground/85 sm:text-base">
+            <p className="mt-2 text-sm text-primary-foreground/85 sm:text-base text-justify">
               Connect with DECAGON to learn more about our products and healthcare solutions.
             </p>
           </div>
